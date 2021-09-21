@@ -13,15 +13,16 @@
 </head>
 <body>
 <div class="bg-info">
+   <h3> <a href="/personal-test/api/setup"> Back to home</a> </h3>
     <div class="py-5 text-center">
 
-        <h3><span>Category : </span><label th:if="${thereIsError == false}" th:text="${question.category}"></label></h3>
-        <h3><span>Test Id : </span><label th:if="${thereIsError == false}" th:text="${question.testId}"></label></h3>
+        <span>Category : </span><label th:if="${thereIsError == false}" th:text="${question.category}"></label>
+        <span>Test Id : </span><label th:if="${thereIsError == false}" th:text="${question.testId}"></label>
         <span class="text-danger" th:if="${thereIsError == true}" th:text="${exception}"> </span>
 
         <form th:if="${thereIsError == false}" action="#" th:action="@{/personalTest}" th:object="${answer}"
               method="post">
-            <h2 th:text="${question.question}"></h2>
+            <h1 th:text="${question.question}"></h1>
             <select th:if="${question.questionType != 'number_range'}" th:field="${answer.answer}">
                 <option th:each="item: ${question.options}" th:value="${item}" th:text="${item}"></option>
             </select>

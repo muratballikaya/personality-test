@@ -14,6 +14,7 @@
 <body>
 
 <div class="bg-info">
+    <h3> <a href="/personal-test/api/setup"> Back to home</a> </h3>
     <div class="py-5 text-center">
 
         <span class="text-danger" th:if="${thereIsError == true}" th:text="${exception}"> </span>
@@ -22,9 +23,9 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Category</th>
-                    <th>Question</th>
-                    <th>Answer</th>
+                    <th class="text-center">Category</th>
+                    <th class="text-center">Question</th>
+                    <th class="text-center">Answer</th>
                 </tr>
                 </thead>
                 <tbody>
