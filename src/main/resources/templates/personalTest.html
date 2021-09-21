@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Personality Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Personality Test Setup</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="bg-info">
+    <div class="py-5 text-center">
+
+        <h3><span>Category : </span><label th:if="${thereIsError == false}" th:text="${question.category}"></label></h3>
+        <h3><span>Test Id : </span><label th:if="${thereIsError == false}" th:text="${question.testId}"></label></h3>
+        <span class="text-danger" th:if="${thereIsError == true}" th:text="${exception}"> </span>
+
+        <form th:if="${thereIsError == false}" action="#" th:action="@{/personalTest}" th:object="${answer}"
+              method="post">
+            <h2 th:text="${question.question}"></h2>
+            <select th:if="${question.questionType != 'number_range'}" th:field="${answer.answer}">
+                <option th:each="item: ${question.options}" th:value="${item}" th:text="${item}"></option>
+            </select>
+            <span th:if="${question.questionType == 'number_range'}">FROM : <input type="number"
+                                                                                   th:field="${answer.from}"></span>
+            <span th:if="${question.questionType == 'number_range'}">TO : <input type="number" th:field="${answer.to}"></span>
+            <div>|||||||||</div>
+            <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

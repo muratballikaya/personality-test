@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Personality Test Setup</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body >
+<div class="bg-info">
+    <div class="py-5 text-center">
+        <span class="text-danger" th:if="${thereIsError == true}" th:text="${exception}"> </span>
+        <form action="#" th:action="@{/setup}" th:object="${setup}" method="post">
+            <h1 class="bd-title">Continue with ready json file </h1>
+            <span>  Select default json </span> <input type="checkbox" name="active" th:field="${setup.defaultJson}"/>
+            <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+            <h1 class="bd-title">Or Paste Json </h1>
+            <textarea rows="20" cols="80" th:field="${setup.jsonData}"> </textarea>
+            <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+            <h1 class="bd-title">Or continue with already used test id</h1>
+            <input type="text" th:field="${setup.testId}">
+            <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>
